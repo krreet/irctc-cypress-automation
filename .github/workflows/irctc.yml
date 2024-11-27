@@ -55,6 +55,12 @@ jobs:
       with:
         node-version: '20.12.2'
 
+    - name: Install wait-on
+      run: npm install -g wait-on
+
+    - name: Wait for Flask server to be ready
+      run: wait-on http://localhost:5000/extract-text --timeout 180
+
     - name: Installing Cypress & Running IRCTC Cypress Automation
       run: |
         npm install cypress
