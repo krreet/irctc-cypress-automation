@@ -31,7 +31,10 @@ jobs:
     - run: |
         sudo timedatectl set-timezone Asia/Kolkata
         pip install -r irctc-captcha-solver/requirements.txt
-        python3 irctc-captcha-solver/app.py "" # python3 irctc-captcha-solver/app.py "" is used for models to load before starting tatkal tickets 
+        # python3 irctc-captcha-solver/app.py "" # python3 irctc-captcha-solver/app.py "" is used for models to load before starting tatkal tickets 
+        # Start Flask server in the background
+        nohup python3 irctc-captcha-solver/app.py &> flask.log &
+        sleep 5  # Allow time for the Flask server to start
         PASSWORD=$(jq -r '.inputs.PASSWORD' $GITHUB_EVENT_PATH)
         USERNAME=$(jq -r '.inputs.USERNAME' $GITHUB_EVENT_PATH)
         UPI_ID=$(jq -r '.inputs.UPI_ID' $GITHUB_EVENT_PATH)
