@@ -31,7 +31,7 @@ jobs:
     - run: |
         sudo timedatectl set-timezone Asia/Kolkata
         pip install -r irctc-captcha-solver/requirements.txt
-        python3 irctc-captcha-solver/app-server.py --host 0.0.0.0 --port 5000
+        nohup python3 irctc-captcha-solver/app-server.py --host 0.0.0.0 --port 5000
         # Start Flask server in the background
         # nohup python3 irctc-captcha-solver/app.py &> flask.log &
         sleep 5  # Allow time for the Flask server to start
