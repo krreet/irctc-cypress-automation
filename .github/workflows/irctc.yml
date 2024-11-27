@@ -58,6 +58,9 @@ jobs:
     - name: Install wait-on
       run: npm install -g wait-on
 
+    - name: Check Flask logs
+      run: cat flask.log
+
     - name: Wait for Flask server to be ready
       run: wait-on http://localhost:5000/extract-text --timeout 180
 
